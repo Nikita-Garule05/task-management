@@ -22,8 +22,7 @@ function Navbar({ notifications }) {
   const [logoutConfirmOpen, setLogoutConfirmOpen] = useState(false);
 
   useEffect(() => {
-    // Check token directly from localStorage
-    const token = localStorage.getItem("stm_access");
+    // Check authentication status
     const currentAuth = isAuthenticated();
     setAuthed(currentAuth);
 
@@ -131,11 +130,6 @@ function Navbar({ notifications }) {
     }, 0);
   };
 
-  const onNavigate = (to) => {
-    setNotifOpen(false);
-    setNavOpen(false);
-    navigate(to);
-  };
 
   return (
     <>

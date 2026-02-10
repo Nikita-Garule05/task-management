@@ -9,7 +9,7 @@ import { deleteTask, getAnalytics, getInsights, getReminders, listAllTasks, list
 function Dashboard() {
   const [tasks, setTasks] = useState([]);
   const [allTasks, setAllTasks] = useState([]);
-  const [analytics, setAnalytics] = useState(null);
+  const [, setAnalytics] = useState(null);
   const [insights, setInsights] = useState(null);
   const [reminders, setReminders] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -134,7 +134,7 @@ function Dashboard() {
 
   useEffect(() => {
     load();
-  }, [params, page]);
+  }, [params, page, load]);
 
   const onToggleComplete = async (task) => {
     try {

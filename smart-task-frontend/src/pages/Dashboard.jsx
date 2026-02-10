@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import Navbar from "../components/Navbar";
 import TaskCard from "../components/TaskCard";
@@ -66,7 +66,7 @@ function Dashboard() {
     return copy;
   }, [tasks]);
 
-  const load = async () => {
+  const load = useCallback(async () => {
     setLoading(true);
     setError("");
     try {
@@ -93,7 +93,7 @@ function Dashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, params, setAnalytics]);
 
   const stats = useMemo(() => {
     const src = Array.isArray(allTasks) ? allTasks : [];
@@ -134,7 +134,7 @@ function Dashboard() {
 
   useEffect(() => {
     load();
-  }, [params, page, load]);
+  }, [load]);
 
   const onToggleComplete = async (task) => {
     try {

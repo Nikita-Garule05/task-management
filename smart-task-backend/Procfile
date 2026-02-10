@@ -1,1 +1,2 @@
 web: gunicorn smart_task_backend.wsgi
+release: python manage.py collectstatic --noinput

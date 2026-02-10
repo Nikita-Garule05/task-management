@@ -24,6 +24,7 @@ function Register() {
       setTimeout(() => navigate("/"), 600);
     } catch (err) {
       const msg =
+        (!err?.response ? "Cannot reach server. Check API URL / CORS settings." : null) ||
         err?.response?.data?.username?.[0] ||
         err?.response?.data?.password?.[0] ||
         err?.response?.data?.detail ||

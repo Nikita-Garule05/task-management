@@ -139,9 +139,9 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 }
 
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:3000').split(',')
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:3000,https://dulcet-brioche-41d5cd.netlify.app').split(',')
 
-CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='').split(',') if config('CSRF_TRUSTED_ORIGINS', default='') else []
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='https://dulcet-brioche-41d5cd.netlify.app').split(',') if config('CSRF_TRUSTED_ORIGINS', default='') else []
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https:\/\/[a-z0-9-]+\.netlify\.app$",

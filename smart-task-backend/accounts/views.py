@@ -18,16 +18,6 @@ from .serializers import CustomTokenObtainPairSerializer, ForgotPasswordSerializ
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
 
-    def post(self, request, *args, **kwargs):
-        print(f"DEBUG: Login attempt for username: {request.data.get('username')}")
-        from django.contrib.auth import authenticate
-        user = authenticate(
-            username=request.data.get('username'),
-            password=request.data.get('password')
-        )
-        print(f"DEBUG: Authentication result: {'Success' if user else 'Failed'}")
-        return super().post(request, *args, **kwargs)
-
 
 class RegisterView(APIView):
     permission_classes = [AllowAny]
@@ -96,5 +86,7 @@ class ResetPasswordView(APIView):
 
         user.set_password(new_password.strip())
         user.save()
+
+        user.refresh_from_db()
 
         return Response({"detail": "Password reset successful."}, status=status.HTTP_200_OK)

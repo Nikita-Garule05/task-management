@@ -1,4 +1,7 @@
 # Smart Task Management System
+## 🚀 Live Demo
+
+🔗https://dulcet-brioche-41d5cd.netlify.app/
 
 A professional, full-stack task management application built with **Django** and **React**. Designed for productivity with a clean UI, smart features, and secure authentication.
 
